@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <script src="https://aframe.io/aframe/dist/aframe-master.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+
+    <script>
+    AFRAME.registerComponent('main', {
+    AFRAME.log('talking to <a-log>');
+    });
+    </script>
+
+  </head>
+  <body>
+    <a-scene>
+        <a-sky src="Chicago-blur.jpg"></a-sky>
+
+      <a-entity id="cameraRig" scale="0.61 1 1">
+        <a-entity
+          camera look-controls position="0 1.7 0">
+        </a-entity>
+      </a-entity>
+
+      <!-- <a-asset-item id="body-object" src="Models/one.obj"></a-asset-item>
+      <a-asset-item id="body-material" src="Models/one.mtl"></a-asset-item>
+      <a-obj-model position="-1 0.5 -3" src="#body-object" mtl="#body-material"></a-obj-model> -->
+      <a-assets>
+        <a-asset-item
+          id="samba"
+          src="Models/sambaskinfeet.glb">
+        </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="samba_entity"
+        gltf-model="#samba"
+        scale="0.02 0.02 0.02"
+        position="-0.2 0.65 -5.39"
+        animation-mixer>
+      </a-entity>
+
+      <a-light
+      intensity="2"
+      color="#00ffff"
+      position="-5.72 6.65 0.80"
+      animation__color="property:color; dir:alternate; dur:2000; easing:easeInOutSine; loop:true; to:#ff0000"
+      alongpath="path:10,10,-10 -20,10,-10 10,0,-10; closed:true; dur:12000">
+      </a-light>
+
+        <a-entity position="0 0 -3">
+          <a-entity log geometry="primitive: plane" material>
+        </a-entity>
+        <a-entity log="channel: foo" geometry="primitive: plane" material>
+        </a-entity>
+
+       </a-entity>
+  <a-log position="0 0 -4"></a-log>
+    </a-scene>
+  </body>
+</html>
